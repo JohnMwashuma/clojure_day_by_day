@@ -60,3 +60,20 @@
     (str "All treasure Latitude and Longitude are: " location))
 
 (find_all_treasure {:lat 34.22 :lng 22.33})
+
+;; Anonymous Functions
+
+(map (fn [name] (str "Hi, " name))
+      ["John"])
+
+; => ("Hi, John")
+
+(def my_special_division (fn [x] (/ 20 x)))
+
+(my_special_division 5)
+
+(#(* % 3) 8) ; => 24
+
+(map #(str "Hi, " %) ["Mwashuma"]) ;=> ("Hi, Mwashuma")
+
+(#(str "Hi, am " % " " %2) "John" "Mwashuma") ;=> "Hi, am John Mwashuma"
