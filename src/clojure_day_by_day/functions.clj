@@ -19,3 +19,44 @@
 
 (salutations "John" "Mr") ;; Dear Mr John:
 (salutations "HR") ;; Dear Mr/Mrs HR:
+
+;; Passing rest args using &
+(defn fav
+  "Return one's favorite things"
+  [name & things]
+  (str "Hi "name", here are my favorite things: "
+  (clojure.string/join ", " things)))
+
+(fav "Mwashuma" "Movies" "gum" "series" "clojure")
+
+;; Destructuring
+;; Getting the first element in a vector
+(defn my-first
+    "Returns the first element in a vector"
+    [[first-thing]]
+    first-thing)
+
+(my-first ["John" "Mwashuma" "Stive"])
+
+; => "John"
+
+(defn find_monny
+    "Destructors a map values"
+    [{lat :lat lng :lng}]
+    (str "Monny Latitude: " lat " and Longitude: " lng ))
+
+(find_monny {:lat 28.22 :lng 81.33})
+
+(defn find_treasure
+    "Destructors a map with the keys method"
+    [{:keys [lat lng]}]
+    (str "The treasure Latitude is: " lat " and Longitude is: " lng))
+
+(find_treasure {:lat 34.22 :lng 22.33})
+
+(defn find_all_treasure
+    "Destructors a map with the keys method"
+    [{:keys [lat lng] :as location}]
+    (str "All treasure Latitude and Longitude are: " location))
+
+(find_all_treasure {:lat 34.22 :lng 22.33})
