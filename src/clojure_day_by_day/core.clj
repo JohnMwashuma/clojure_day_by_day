@@ -17,4 +17,38 @@
 ((first [+ 0]) 1 2 3)
 ; 6
 
+(def ingredients
+  ["Water" "Wheat Flour" "Sugar" "Salt" "Cream"])
+
+(let [cake (take 4 ingredients)]
+      cake)
+
+;=> ("Water" "Wheat Flour" "Sugar" "Salt")
+
+(def 0)
+
+(let [x (inc x)] x) ;; Increments x by 1
+
+;=> 1
+
+(def y [])
+
+(into y (set [:a :a]))
+;=>[:a]
+
+;; Regular experessions
+
+;; Looks for strings starting with left-
+(re-fing #"^left-" "left-side") 
+;=>left-
+
+(re-fing #"^left-" "nleft-side")
+;=>nil
+
+;; Reduce function
+
+(reduce +[1 2 3 4])
+
+;(+(+(+ 1 2) 3) 4) Reduce steps
+;=>10
 
