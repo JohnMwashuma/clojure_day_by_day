@@ -77,3 +77,45 @@
 (map #(str "Hi, " %) ["Mwashuma"]) ;=> ("Hi, Mwashuma")
 
 (#(str "Hi, am " % " " %2) "John" "Mwashuma") ;=> "Hi, am John Mwashuma"
+
+;; Take function
+; It takes a number and a sequence
+
+(take 3 [1 2 3 4 5 6])
+;=> [1 2 3]
+
+(drop 3 [1 2 3 4 5 6 7 8 9 10])
+; => (4 5 6 7 8 9 10)
+
+;take-while
+(def bakery_orders [
+  {:month 1 :name "Queen Cakes" :quantity 100}
+  {:month 2 :name "Pizza's" :quantity 39}
+  {:month 3 :name "Wedding Cakes" :quantity 20}
+  {:month 4 :name "Breads" :quantity 200}
+  {:month 5 :name "Yoghurt" :quantity 50}
+])
+
+(take-while #(< (:month %) 3) bakery_orders)
+;=>({:month 1, :name "Queen Cakes", :quantity 100} {:month 2, :name "Pizza's", :quantity 39})
+
+(drop-while #(< (:month %) 3) bakery_orders)
+;=>({:month 3, :name "Wedding Cakes", :quantity 20} {:month 4, :name "Breads", :quantity 200} {:month 5, :name "Yoghurt", :quantity 50})
+
+; Takes anything that is less than 5 and drops anything less than 3
+(take-while #(< (:month %) 5) (drop-while #(< (:month %) 3) bakery_orders))
+;=>({:month 3, :name "Wedding Cakes", :quantity 20} {:month 4, :name "Breads", :quantity 200})
+
+;; Filter
+(filter #(> (:month %) 3) bakery_orders)
+;=>({:month 4, :name "Breads", :quantity 200} {:month 5, :name "Yoghurt", :quantity 50})
+
+;; Some
+(some #(> (:month %) 4) bakery_orders)
+;=>true
+
+(some #(and (> (:month %) 4) %) bakery_orders)
+;=>{:month 5, :name "Yoghurt", :quantity 50}
+
+(some #(> (:month %) 5) bakery_orders)
+;=>nil
