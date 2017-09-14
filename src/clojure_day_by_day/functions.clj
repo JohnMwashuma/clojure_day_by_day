@@ -169,3 +169,32 @@
 
 (conj {:name "John"} {:age "24"})
 ;=>{:name "John", :age "24"}
+
+;; Function Functions
+; Apply
+
+(max 1 2 3)
+;=> 3
+(max [1 2 3])
+;=> [1 2 3]
+
+(apply max [1 2 3])
+;=>3
+
+;; Applying apply to conj
+(defn my_conj
+[target nums]
+(apply conj target nums))
+
+(my_conj [1] [2 3 4 5])
+;=>[1 2 3 4 5]
+
+;; Partial 
+
+(def add2 (partial + 8))
+(add2 2)
+;=>10
+
+(def my_new_conj (partial ["John"]))
+(my_new_conj "Kirigha" "Mwashuma")
+;=>["John" "Kirigha" "Mwashuma"]
