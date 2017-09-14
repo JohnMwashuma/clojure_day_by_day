@@ -119,3 +119,53 @@
 
 (some #(> (:month %) 5) bakery_orders)
 ;=>nil
+
+;; Infinite Sequences
+
+(concat (take 2 (repeat "Yeah!..")) ["Got it!"])
+;=>("Yeah!.." "Yeah!.." "Got it!")
+
+(take 5 (repeatedly (fn [] (rand-int 10))))
+;=>(1 3 0 2 3)
+
+(cons 0 '(1 2 3))
+;=>(0 1 2 3)
+
+;; Collection Abstraction
+
+(empty? [])
+;=>true
+
+(empty? [1 2])
+;=>false
+
+(map identity {:name "John"})
+;=>{[:name "John"]}
+
+(into {} (map identity {:name "John"}))
+;=>{:name "John"}
+
+(into [] (map identity [:name :description]))
+;=>[:name :description]
+
+;; Changes a vector to a set
+(into #{} (map identity [:john :john]))
+;=>#{:john}
+
+(into {:firstName "John"} [[:lastName "Mwashuma"]] )
+;=>{:firstName "John", :lastName "Mwashuma"}
+
+(into {:firstName "John"} [ {:middleName "Kirigha"} {:lastName "Mwashuma"}])
+;=>{:firstName "John", :middleName "Kirigha", :lastName "Mwashuma"}
+
+(into ["John"] '("Kirigha" "Mwashuma"))
+;=>["John" "Kirigha" "Mwashuma"]
+
+(conj [0] 1 2 3)
+;=>[0 1 2 3]
+
+(conj {:name "John"} [:age "24"])
+;=>{:name "John", :age "24"}
+
+(conj {:name "John"} {:age "24"})
+;=>{:name "John", :age "24"}
