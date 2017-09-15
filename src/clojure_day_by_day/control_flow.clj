@@ -99,6 +99,34 @@
           "His telling the truth")
 ;=>"His telling the truth"
 
-(when-let [truth_tester false]
+(when-let [truth_testers false]
            "His telling the truth")
 ;=>nil
+
+; Checking more than one condition
+(let [x 5]
+    (cond 
+    (> x 6) "X is greater than 6"
+    (> x 5) "X is greater than 5"
+    (> x 4) "X is greater than 4"
+    (> x 3) "X is greater than 3"))
+;=>"X is greater than 4"
+
+(let [x -1]
+    (cond 
+    (> x 6) "X is greater than 6"
+    (> x 5) "X is greater than 5"
+    (> x 4) "X is greater than 4"
+    (> x 3) "X is greater than 3"
+    (> x 2) "X is greater than 2"
+    (> x 1) "X is greater than 1"
+    :else "X is a negative number"))
+;=>"X is a negative number"
+
+(let [x "John"]
+(case x
+"Silvan" "That's my younger brother"
+"Daniel" "That's my eldest brother"
+"John" "That's definetly me man!!"
+"Sorry, i don't recognize that name"))
+;=>"That's definetly me man!!"
