@@ -130,3 +130,47 @@
 "John" "That's definetly me man!!"
 "Sorry, i don't recognize that name"))
 ;=>"That's definetly me man!!"
+
+(defn old [name direction]
+        (if (= direction :small)
+        (str name " is growing small")
+        (str name " is growing bigger"))
+        )
+(old "John" :small)
+;=>"John is growing small"
+
+((partial old "John") :bigger)
+;=>"John is growing bigger"
+
+(defn growth [direction]
+             (if (= direction "big")
+             "small"
+             "big"))
+
+(defn oh_my [direction]
+            (str "Oh! my, you are growing " direction "!"))
+
+(defn surprise [direction]
+((comp oh_my growth) direction))
+
+(surprise "big")
+
+(defn adder [x y] 
+            (+ x y))
+
+(def addition (partial adder 5))
+
+(addition 10)
+;=>15
+
+(defn add10 [x]
+            (+ x 10))
+
+(defn multiply2 [x]
+            (str "The result of adder10 multiplied by 2 is: " (* x 2)))
+
+(defn result [x]
+        ((comp multiply2 add10) x))
+
+(result 20)
+;=>"The result of adder10 multiplied by 2 is: 60"
