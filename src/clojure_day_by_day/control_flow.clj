@@ -40,3 +40,26 @@
 (not= 1 2)
 ;=>true
 
+;;  Testing if something is true for every element in the collection
+(every? odd? [1 3 5])
+;=>true
+
+(every? odd? [1 2 3 5])
+;=>false
+
+(defn check_poison? [x] (= x :eatable))
+
+(every? check_poison? [:eatable :poison])
+;=>false
+
+(every? check_poison? [:eatable :eatable])
+;=>true
+
+(every? (fn[x] (= x :eatable)) [:eatable :eatable])
+;=>true
+
+(every? #(= % :poison) [:eatable :eatable])
+;=>false
+
+(not-any? #(= % :poison) [:eatable :eatable])
+;=>true
