@@ -63,3 +63,26 @@
 
 (not-any? #(= % :poison) [:eatable :eatable])
 ;=>true
+
+;; Checking if some elements exsists in a collection
+
+(some #(> % 3) [1 2 3 4 5])
+;=>true
+(some #{3} #{1 2 3})
+;=>3
+
+(if (= :drinkme :drinkme)
+    "You can drink me"
+    "I am not drinkable")
+;=>"You can drink me"
+
+(let [check_age (> 24 18)]
+    (if check_age
+    "Please register for a National ID"
+    "You are too young to get a National ID"))
+;=>"Please register for a National ID"
+
+(if-let [check_age (> 24 18)]
+        "Please register for a National ID"
+        "You are too young to get a National ID")
+;=>"Please register for a National ID"
