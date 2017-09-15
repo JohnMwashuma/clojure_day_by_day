@@ -70,6 +70,17 @@
 (assoc {} :max 30)
 ;=>{:max 30}
 
+(def my_map {:name "John" :place_work "Ona"})
+
+;; Updating a map key
+; assoc function associates the new key-value pairs to map:
+(assoc my_map :name "John Mwashuma")
+;=>{:name "John Mwashuma" :place_work "Ona"}
+
+;; Deleting a map key
+(dissoc my_map :place_work)
+;=>{:name "John"}
+
 ;; Maps
 
 (defn title_iz [title]
