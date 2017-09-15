@@ -86,3 +86,19 @@
         "Please register for a National ID"
         "You are too young to get a National ID")
 ;=>"Please register for a National ID"
+
+(defn truth_tester [truth]
+(when truth "His telling the truth"))
+
+(truth_tester true)
+;=>"His telling the truth"
+(truth_tester false)
+;=>nil
+
+(when-let [truth_tester (true? true)]
+          "His telling the truth")
+;=>"His telling the truth"
+
+(when-let [truth_tester false]
+           "His telling the truth")
+;=>nil
