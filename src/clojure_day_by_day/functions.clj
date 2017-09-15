@@ -198,3 +198,28 @@
 (def my_new_conj (partial ["John"]))
 (my_new_conj "Kirigha" "Mwashuma")
 ;=>["John" "Kirigha" "Mwashuma"]
+
+;; Sets
+;Union
+(clojure.set/union #{:t :u} #{:u :v})
+;=>#{:v :t :u}
+
+;Difference
+(clojure.set/difference #{:t :u} #{:u :v})
+;=>#{:t}
+
+;Intersection
+(clojure.set/intersection #{:t :u} #{:u :v})
+;=>#{:u}
+
+(get #{:t :u} :t)
+;=>#{:t}
+
+(contains? #{:t :u} :t)
+;=>true
+
+(conj #{:t :u} :v)
+;=>#{:t :u :v}
+
+(disj #{:t :u} :u)
+;=>#{:t}
