@@ -139,6 +139,10 @@
 (empty? [1 2])
 ;=>false
 
+;; use this to check for not empty
+(seq [])
+;=> nil
+
 (map identity {:name "John"})
 ;=>{[:name "John"]}
 
